@@ -1,20 +1,4 @@
-{% extends "base.html" %}{% block content %}
-<div class="page-head">
-  <div>
-    <h1>{{ paper['title'] }}</h1>
-    <div class="meta">Module: {{ module_name }}{% if paper['year'] %} • Year: {{ paper['year'] }}{% endif %}{% if paper['paper_type'] %} • Type: {{ paper['paper_type'] }}{% endif %}</div>
-  </div>
-  <div>
-    <a class="btn" href="{{ url_for('download', paper_id=paper['id']) }}">Download</a>
-  </div>
-</div>
-
-{% if pair %}
-  <p>Paired with: <a href="{{ url_for('preview', paper_id=pair['id']) }}">{{ pair['title'] }}</a></p>
-{% endif %}
-{% if linked_mark %}
-  <p>Mark scheme: <a href="{{ url_for('preview', paper_id=linked_mark['id']) }}">{{ linked_mark['title'] }}</a></p>
-{% endif %}
-
-<div class="pdf-frame"><iframe src="{{ url_for('serve_file', paper_id=paper['id']) }}"></iframe></div>
+{% extends "base.html" %}
+{% block content %}
+<p>This branch has been cleaned. Please provide the replacement code.</p>
 {% endblock %}

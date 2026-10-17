@@ -1,40 +1,4 @@
-{% extends "base.html" %}{% block content %}
-<div class="page-head"><div><h1>Upload Paper</h1></div></div>
-<form class="upload-form" method="post" enctype="multipart/form-data">
-  <label>Module
-    <select name="module" required>
-      <option value="" disabled {% if not selected %}selected{% endif %}>Select</option>
-      {% for slug, name in modules %}
-        <option value="{{ slug }}" {% if slug==selected %}selected{% endif %}>{{ name }}</option>
-      {% endfor %}
-    </select>
-  </label>
-  <label>Title
-    <input type="text" name="title" required>
-  </label>
-  <label>Year (optional)
-    <input type="text" name="year" placeholder="e.g. 2020">
-  </label>
-  <label>Paper type
-    <select name="paper_type" required>
-      <option value="question">Question paper</option>
-      <option value="mark">Mark scheme</option>
-    </select>
-  </label>
-  <label>Pair with (optional, for mark schemes)
-    <select name="pair_with">
-      <option value="">-- none --</option>
-      {% for c in pair_candidates %}
-        <option value="{{ c['id'] }}">{{ c['title'] }}</option>
-      {% endfor %}
-    </select>
-  </label>
-  <label>Keywords (optional)
-    <input type="text" name="keywords" placeholder="comma separated keywords">
-  </label>
-  <label>PDF file
-    <input type="file" name="file" accept=".pdf" required>
-  </label>
-  <button class="btn primary" style="align-self: flex-start;" type="submit">Upload</button>
-</form>
+{% extends "base.html" %}
+{% block content %}
+<p>This branch has been cleaned. Please provide the replacement code.</p>
 {% endblock %}

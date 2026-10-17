@@ -1,41 +1,10 @@
 <!doctype html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>A-Level Mathematics</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-  <header class="topbar">
-    <div class="container header-inner">
-      <div class="brand">
-        <a href="{{ url_for('index') }}">A‑Level Mathematics</a>
-      </div>
-      <div class="util">
-        <form action="{{ url_for('search') }}" method="get" class="search-form">
-          <input name="q" placeholder="Search papers, year, filename..." value="{{ request.args.get('q','') }}">
-          <button type="submit">Search</button>
-        </form>
-        <a class="use-site" href="https://Yvounne.github.io/alevel-pastpapers" target="_blank" rel="noopener">Use the website</a>
-      </div>
-    </div>
-  </header>
-
-  <main class="container">
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        <div class="flash-area">
-          {% for category, message in messages %}
-            <div class="flash {{ category }}">{{ message }}</div>
-          {% endfor %}
-        </div>
-      {% endif %}
-    {% endwith %}
-
-    {% block content %}{% endblock %}
-  </main>
-
-  <footer class="container" style="margin: 60px auto 120px; text-align:center; color:#888;">Built for sharing past papers • Public uploads allowed</footer>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <title>Clean Branch</title>
+  </head>
+  <body>
+    <p>This branch has been cleaned. Please provide the replacement code.</p>
+  </body>
 </html>
