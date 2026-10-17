@@ -1,0 +1,24 @@
+{% extends "base.html" %}{% block content %}
+<div class="header-top"><span class="small-text">SHARED LIBRARY</span>
+  <h1 class="main-title">A-level Mathematics Past Papers</h1>
+  <p class="desc-text">Open a module, upload a question paper or mark scheme, and everyone using this site can view or download it.</p>
+  <hr class="divider">
+</div>
+
+{% for cat in categories %}
+<div class="category-section">
+  <h2 class="category-title">{{ cat.title }}</h2>
+  <p class="category-desc">{{ cat.subtitle }}</p>
+  <div class="grid">
+    {% for m in cat.modules %}
+      <a class="card" href="{{ url_for('module_page', slug=m.slug) }}">
+        <span class="card-code">{{ m.code }}</span>
+        <span class="card-name">{{ m.name }}</span>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+{% endfor %}
+
+<div style="margin-top: 50px; text-align: right;"><a href="/upload" class="btn primary">Upload New Paper</a></div>
+{% endblock %}
