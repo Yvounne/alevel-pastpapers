@@ -1,90 +1,62 @@
 # A-Level Past Papers (Flask)
 
-This repository holds a cleaned branch ready for a replacement A-Level past papers web app. The main branch now contains the run instructions and placeholder notes — further development will be done on `main` unless you ask otherwise.
+Easy, one-page guide to open and use the website locally for non-technical users.
 
-This README explains how to open and run the website locally from the repository and where to look for a live site if deployed.
+This repo currently contains placeholder files. Once the full app is present, the same steps will run the real site.
 
----
-
-## Quick summary
-
-- Active branch for development: `main` (per your request)
-- Current state: placeholder "cleaned" files in the repo. Replace the app code in this branch to run the full site.
-- Default local URL (when running the Flask dev server): `http://127.0.0.1:5000`
+If you get stuck, copy the exact commands into your terminal (Windows PowerShell, macOS Terminal, or Linux terminal) or follow the one-click options below.
 
 ---
 
-## Run the website locally (recommended for development)
+## Super-easy ways to open the website (pick one)
 
-1. Clone the repository and switch to the main branch:
+Option A — Windows (one double-click)
+1. Download the repository ZIP from GitHub or clone it:
+   - Download: https://github.com/Yvounne/alevel-pastpapers -> Code -> Download ZIP. Unzip it.
+   - Or clone with Git if you know how: `git clone https://github.com/Yvounne/alevel-pastpapers.git`
+2. Open the folder and double-click `start.bat`.
+3. A terminal window will open and install dependencies (first run) and start the site. When it shows "Running on http://127.0.0.1:5000", open your browser and go to:
+   - http://127.0.0.1:5000
 
-   ```bash
-   git clone https://github.com/Yvounne/alevel-pastpapers.git
-   cd alevel-pastpapers
-   git checkout main
-   ```
+Notes: If Windows warns about running a script, choose "Run anyway" or unblock the file in Properties -> General -> Unblock before running.
 
-2. Create and activate a Python virtual environment (macOS / Linux):
+Option B — macOS / Linux (one terminal command)
+1. Download and unzip the repo or clone it:
+   - `git clone https://github.com/Yvounne/alevel-pastpapers.git`
+   - `cd alevel-pastpapers`
+2. Run the start script (these commands will create a virtual environment and start the app):
+   - `./start.sh`
+3. When the script shows "Running on http://127.0.0.1:5000", open your browser and go to:
+   - http://127.0.0.1:5000
 
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
+Tip: If you see a "Permission denied" when running `./start.sh`, run `chmod +x start.sh` once and try again.
 
-   On Windows (PowerShell):
-
-   ```powershell
-   python -m venv venv
-   .\venv\Scripts\Activate.ps1
-   ```
-
-3. Install dependencies:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Start the application (development mode):
-
-   ```bash
-   ./start.sh
-   ```
-
-   If the script is not executable, run directly:
-
-   ```bash
-   python app.py
-   ```
-
-5. Open your browser and go to:
-
-   ```text
-   http://127.0.0.1:5000
-   ```
-
-   You should see the placeholder page if the branch has not yet been replaced with the full app. Once the full app is added, the same URL will serve the full site locally.
+Option C — Docker (one command, advanced but reliable)
+- If you have Docker installed, open a terminal in the project folder and run:
+  - `docker build -t alevel-pastpapers .`
+  - `docker run -p 5000:5000 -v "$(pwd)/uploads:/app/uploads" alevel-pastpapers`
+- Open your browser at http://127.0.0.1:5000
 
 ---
 
-## Notes about the current (placeholder) repo
-
-- The repository currently contains a minimal placeholder app that prints a message indicating the branch is cleaned. Replace the placeholder files with the full app code (templates, static assets, `app.py`, database schema) to restore the upload/preview/download functionality.
-- Uploads (when implemented) will be stored in an `uploads/` directory inside the repository root.
-- The expected Flask server address is `127.0.0.1:5000` unless you change the `app.run()` host/port or run behind a different WSGI server.
-
----
-
-## Deploying / Live site
-
-- If you want a publicly accessible site, we can deploy to a server (VPS) or add a GitHub Actions workflow to deploy to a hosting provider. GitHub Pages supports static sites only — for a Flask app you will need a server/container-based host or convert to a static frontend.
+## Quick troubleshooting (common issues)
+- "Command not found" for `python` or `python3`: install Python 3 from https://www.python.org/downloads/
+- "pip: command not found": install pip or use the Python installer which includes pip.
+- If site doesn't load in browser: check the terminal — the app must say "Running on http://127.0.0.1:5000". If it shows errors, copy them and share them.
+- If port 5000 is in use, start with a different port: `python app.py` and edit `app.run(host='127.0.0.1', port=5001)` or run `FLASK_RUN_PORT=5001 python app.py` in some environments.
 
 ---
 
-## What I can do next for you (on `main`)
+## Quick reference URLs
+- Local site: http://127.0.0.1:5000
+- Preview endpoint (when app is installed): /preview/<paper_id>
+- File serve: /file/<paper_id>
+- Download: /download/<paper_id>
+- Search: /search?q=term&module=slug&year=YYYY&paper_type=question|mark
 
-- Replace the placeholder code with your corrected app code and push it to `main`.
-- Add a GitHub Actions workflow to build and deploy the app (to a VM/container host or to a hosting provider).
-- Set up a Dockerfile and a docker-compose configuration for easy local and remote deployment.
-- Help configure Gunicorn + Nginx and provide example systemd service files.
+---
 
-If you want me to update the `main` branch now with your replacement code, paste the code here and say "Replace main with this code" and I will push it and (optionally) open a PR.
+If you want, I can also:
+- Add a short animated GIF showing the steps (I can produce guidance and files, but you must upload images in the repo), or
+- Add a Windows installer-like script (PowerShell) that does everything silently.
+
